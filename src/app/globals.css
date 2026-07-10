@@ -333,11 +333,7 @@ main > .sec.neg {
   white-space: normal;
 }
 
-/* 특이사항 노트가 달린 카드 (예: 매력 없음 → 카파 획득 가능) */
-.card.note {
-  border-color: rgba(217, 180, 95, 0.5);
-  box-shadow: 0 0 0 1px rgba(217, 180, 95, 0.22), 0 0 16px rgba(217, 180, 95, 0.12);
-}
+/* 특이사항 노트 배지 (예: 매력 없음 → 카파 획득 가능) */
 .cbadge {
   flex: 0 0 auto;
   font-size: 10.5px;

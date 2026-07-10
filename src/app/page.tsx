@@ -67,8 +67,6 @@ export default function Home() {
         <div className="infobar" role="note">
           <span className="ico" aria-hidden="true">ⓘ</span>
           <div className="inotes">
-            <span>공식 정보가 없어 선택 제한이 실제와 다를 수 있습니다.</span>
-            <span>시즌 캐릭터는 프레스티지를 얻을 수 없습니다.</span>
             <span>
               알레르기는 메드킷과 CMS를 제외한 의약품, 자극제, 음료, 식량에만 적용되며, 발동 시 손 떨림 후 중독
               피해가 발생합니다.

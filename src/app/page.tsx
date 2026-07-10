@@ -55,13 +55,6 @@ export default function Home() {
 
   return (
     <div className="app">
-      <div className="infobar" role="note">
-        <span className="ico" aria-hidden="true">ⓘ</span>
-        <span>
-          표시된 특성의 수치와 효과는 정확하지 않을 수 있습니다. 함께 고를 수 없도록 막아둔 조합은
-          공식 정보가 아니라 저희가 임의로 추정한 것이며, 지금은 그중 일부에만 적용되어 있습니다.
-        </span>
-      </div>
       <header>
         <div className="brand">
           <div className="mark" />
@@ -69,6 +62,12 @@ export default function Home() {
             <div className="title">KORD BREACH</div>
             <div className="sub">특성 시뮬레이터 · SEASON 1</div>
           </div>
+        </div>
+        <div className="infobar" role="note">
+          <span className="ico" aria-hidden="true">ⓘ</span>
+          <span>
+            표시된 수치와 효과, 그리고 동시 선택 제한은 비공식 추정이므로 실제와 다를 수 있습니다.
+          </span>
         </div>
         <div className="score">
           <div className="scorepanel">

@@ -321,14 +321,17 @@ main > .sec.neg {
   white-space: normal;
 }
 
-/* 상단 안내 배너 */
+/* 헤더 중앙 안내 배너 (브랜드와 점수 패널 사이) */
 .infobar {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  flex: 0 0 auto;
-  font-size: 12px;
-  line-height: 1.45;
+  align-items: center;
+  gap: 7px;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 560px;
+  align-self: center;
+  font-size: 11.5px;
+  line-height: 1.4;
   color: var(--dim);
   background: rgba(95, 170, 102, 0.06);
   border: 1px solid var(--gline);
@@ -429,6 +432,10 @@ main > .sec.neg {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
+  }
+  .infobar {
+    align-self: stretch;
+    max-width: none;
   }
   .score {
     justify-content: space-between;

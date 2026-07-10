@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nanum_Gothic } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const nanum = Nanum_Gothic({
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body>
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

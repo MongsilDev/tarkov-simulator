@@ -31,13 +31,24 @@ body {
   height: 100%;
 }
 
+html {
+  background: var(--bg2);
+}
 body {
   margin: 0;
-  background: radial-gradient(130% 90% at 50% 0%, #131d20 0%, var(--bg) 55%, var(--bg2) 100%);
   color: var(--text);
   font-family: var(--sans);
   height: 100vh;
   overflow: hidden;
+}
+/* Fixed gradient backdrop so scrolling (and mobile overscroll) never
+   reveals a bare white background behind the content. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(130% 90% at 50% 0%, #131d20 0%, var(--bg) 55%, var(--bg2) 100%);
 }
 
 .app {
@@ -68,7 +79,7 @@ header {
   box-shadow: 0 0 12px rgba(95, 170, 102, 0.55);
 }
 .title {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
   letter-spacing: 0.15em;
 }
@@ -96,7 +107,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  font-size: 13.5px;
+  font-size: 13px;
   color: var(--dim);
   font-variant-numeric: tabular-nums;
 }
@@ -122,7 +133,7 @@ header {
   text-transform: uppercase;
 }
 .sp-net .val {
-  font-size: 40px;
+  font-size: 34px;
   font-weight: 800;
   margin-top: 4px;
   font-variant-numeric: tabular-nums;
@@ -144,7 +155,7 @@ header {
 
 .bar {
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.2em;
   color: #dbe4e2;
@@ -283,7 +294,7 @@ main > .sec.neg {
 .cname {
   flex: 1;
   min-width: 0;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.02em;
   white-space: nowrap;
@@ -291,7 +302,7 @@ main > .sec.neg {
   text-overflow: ellipsis;
 }
 .cpts {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   flex: 0 0 auto;
   padding: 2px 8px;
@@ -307,7 +318,7 @@ main > .sec.neg {
   color: #e2a596;
 }
 .ceff {
-  font-size: 13.5px;
+  font-size: 12.5px;
   line-height: 1.28;
   color: var(--dim);
   margin-top: 3px;
@@ -381,6 +392,18 @@ main > .sec.neg {
     padding: 12px 14px 28px;
     gap: 14px;
   }
+  /* keep the score/header pinned while the cards scroll under it */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    margin: -12px -14px 0;
+    padding: 12px 14px;
+    background: rgba(12, 18, 21, 0.92);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gline);
+  }
   main {
     flex: initial;
     gap: 16px;
@@ -423,39 +446,91 @@ main > .sec.neg {
   }
 }
 
-/* Phone: single column + stacked header */
+/* Phone: keep two columns, compact header (brand + score on one row,
+   info banner wraps below), smaller type. */
 @media (max-width: 560px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
   header {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px;
+  }
+  .brand {
+    order: 1;
+    gap: 9px;
+  }
+  .mark {
+    height: 30px;
+  }
+  .score {
+    order: 2;
+    margin-left: auto;
+    gap: 10px;
   }
   .infobar {
+    order: 3;
+    flex: 1 1 100%;
     align-self: stretch;
     max-width: none;
   }
-  .score {
-    justify-content: space-between;
-    gap: 12px;
-  }
   .scorepanel {
-    flex: 1 1 auto;
-    justify-content: space-between;
-    padding: 8px 14px;
+    padding: 6px 12px;
+    gap: 12px;
+    border-radius: 8px;
+  }
+  .sp-break {
+    font-size: 12px;
+    gap: 3px;
+  }
+  .sp-net {
+    padding-left: 12px;
   }
   .sp-net .val {
-    font-size: 32px;
+    font-size: 26px;
   }
   .title {
-    font-size: 20px;
+    font-size: 18px;
   }
   .sub {
-    letter-spacing: 0.22em;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+  .reset {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+  /* two columns, tightened cards */
+  .grid {
+    gap: 6px;
+  }
+  .grid.glob,
+  .grid.pos,
+  .grid.neg {
+    grid-auto-rows: minmax(56px, auto);
+  }
+  .card,
+  .gchip {
+    gap: 8px;
+    padding: 7px 9px;
+    min-height: 56px;
+  }
+  .cic {
+    width: 34px;
+    height: 34px;
   }
   .cname {
-    font-size: 17px;
+    font-size: 14px;
+  }
+  .ceff {
+    font-size: 11px;
+    line-height: 1.25;
+    margin-top: 2px;
+  }
+  .cpts {
+    font-size: 12px;
+    padding: 1px 6px;
+  }
+  .bar {
+    font-size: 12px;
+    letter-spacing: 0.15em;
   }
 }

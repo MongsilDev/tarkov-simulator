@@ -252,8 +252,10 @@ main > .sec.neg {
 .cic {
   width: 100cqh;
   height: 100cqh;
-  max-width: 40px;
-  max-height: 40px;
+  max-width: 44px;
+  max-height: 44px;
+  box-sizing: border-box;
+  padding: 4px;
   flex: 0 0 auto;
   color: #b3c0bd;
   background-color: currentColor;
@@ -263,6 +265,8 @@ main > .sec.neg {
   mask-position: center;
   -webkit-mask-size: contain;
   mask-size: contain;
+  -webkit-mask-origin: content-box;
+  mask-origin: content-box;
 }
 .card.pos[aria-pressed="true"] .cic {
   color: var(--grn);
@@ -409,8 +413,8 @@ main > .sec.neg {
     padding: 8px 12px;
   }
   .cic {
-    width: 34px;
-    height: 34px;
+    width: 40px;
+    height: 40px;
     max-width: none;
     max-height: none;
   }

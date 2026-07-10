@@ -33,7 +33,7 @@ export const POSITIVE: Trait[] = [
   { id: "hypodipsia", name: "갈증 둔화", points: -2, icon: "drop", effect: "수분 소모 15% 감소" },
   { id: "polyphagia", name: "배부름", points: -2, icon: "bolt", effect: "에너지 소모 15% 감소" },
   { id: "sturdy-bones", name: "튼튼한 뼈", points: -3, icon: "bone", effect: "사지 골절·낙하 피해 15% 감소" },
-  { id: "average", name: "평균치", points: -10, icon: "user", effect: "모든 스킬 레벨 25 시작 · 상승 불가 (크래프팅 제외)" },
+  { id: "average", name: "평균치", points: -10, icon: "user", effect: "모든 스킬 레벨 25 시작 · 더 이상 상승 불가" },
   { id: "kappa-protocol", name: "카파 프로토콜", points: -21, icon: "box", effect: "카파 보안 컨테이너 즉시 획득" },
 ];
 
@@ -63,7 +63,7 @@ export const NEGATIVE: Trait[] = [
   { id: "hemophilia", name: "출혈 과다", points: 2, icon: "drop", effect: "출혈 발생 확률 25% 증가" },
   { id: "osteoporosis", name: "골다공증", points: 3, icon: "bone", effect: "사지 골절·낙하 피해 15% 증가" },
   { id: "exhaustion", name: "탈진", points: 4, icon: "bolt", effect: "팔·다리 스태미너 회복 15% 감소 · 팔·다리 스태미너 −10" },
-  { id: "well-that-hurt", name: "어이쿠, 아파!", points: 2, icon: "cross", effect: "치료 아이템 사용 시 자원 25% 더 소모" },
+  { id: "well-that-hurt", name: "어이쿠, 아파!", points: 2, icon: "cross", effect: "의료 키트 사용 시 자원 25% 더 소모" },
   { id: "incompetent", name: "무능한", points: 4, icon: "user", effect: "스킬 숙련 25% 감소 (볼트액션 제외) · 레벨 30 상한 (크래프팅 제외)" },
   { id: "polydipsia", name: "갈증 과다", points: 1, icon: "drop", effect: "수분 소모 15% 증가" },
   { id: "chronic-fatigue", name: "만성피로", points: 1, icon: "bolt", effect: "에너지 소모 15% 증가" },

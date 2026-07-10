@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { GLOBAL, POSITIVE, NEGATIVE, type Trait } from "@/data/traits";
+import { GLOBAL, POSITIVE, NEGATIVE, conflictMap, type Trait } from "@/data/traits";
 import { TraitIcon } from "@/components/TraitIcon";
 
 const fmt = (n: number) => (n > 0 ? "+" : "") + n;
@@ -21,12 +21,24 @@ export default function Home() {
   const gain = NEGATIVE.filter((t) => sel.has(t.id)).reduce((a, t) => a + (t.points ?? 0), 0);
   const net = cost + gain;
 
-  const Card = ({ t, type }: { t: Trait; type: "pos" | "neg" }) => (
+  // 선택된 특성과 상호 배타 관계라 지금은 고를 수 없는 특성들
+  const blocked = new Set<string>();
+  for (const id of sel) {
+    for (const c of conflictMap[id] ?? []) {
+      if (!sel.has(c)) blocked.add(c);
+    }
+  }
+
+  const Card = ({ t, type }: { t: Trait; type: "pos" | "neg" }) => {
+    const isBlocked = blocked.has(t.id);
+    return (
     <button
       type="button"
       className={`card ${type}`}
       aria-pressed={sel.has(t.id)}
       aria-label={`${t.name} ${fmt(t.points ?? 0)}`}
+      disabled={isBlocked}
+      title={isBlocked ? "충돌하는 특성이 선택되어 있어 함께 고를 수 없습니다" : undefined}
       onClick={() => toggle(t.id)}
     >
       <TraitIcon id={t.id} className="cic" />
@@ -38,10 +50,18 @@ export default function Home() {
         <div className="ceff">• {t.effect}</div>
       </div>
     </button>
-  );
+    );
+  };
 
   return (
     <div className="app">
+      <div className="infobar" role="note">
+        <span className="ico" aria-hidden="true">ⓘ</span>
+        <span>
+          표시된 특성의 수치와 효과는 정확하지 않을 수 있습니다. 함께 고를 수 없도록 막아둔 조합은
+          공식 정보가 아니라 저희가 임의로 추정한 것이며, 지금은 그중 일부에만 적용되어 있습니다.
+        </span>
+      </div>
       <header>
         <div className="brand">
           <div className="mark" />

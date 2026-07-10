@@ -37,6 +37,30 @@ export const POSITIVE: Trait[] = [
   { id: "kappa-protocol", name: "카파 프로토콜", points: -21, icon: "box", effect: "카파 보안 컨테이너 즉시 획득" },
 ];
 
+// 상호 배타(동시 선택 불가) 쌍.
+// ⚠️ 공식 정보가 아니라 효과가 완전히 상쇄/무효화되는 조합을 자체 추정한 것.
+export const CONFLICTS: [string, string][] = [
+  // 같은 스탯을 정확히 반대로 → 합이 0
+  ["thrombophilia", "hemophilia"], // 출혈 발생 확률 ∓25%
+  ["sturdy-bones", "osteoporosis"], // 사지 골절·낙하 피해 ∓15%
+  ["hypodipsia", "polydipsia"], // 수분 소모 ∓15%
+  ["polyphagia", "chronic-fatigue"], // 에너지 소모 ∓15%
+  // 평균치(모든 스킬 25 고정·상승 불가)가 상대 특성을 완전히 무효화
+  ["average", "hercules"],
+  ["average", "tarkov-shooter"],
+  ["average", "incompetent"],
+];
+
+// id → 충돌하는 id 목록 (양방향)
+export const conflictMap: Record<string, string[]> = (() => {
+  const m: Record<string, string[]> = {};
+  for (const [a, b] of CONFLICTS) {
+    (m[a] ??= []).push(b);
+    (m[b] ??= []).push(a);
+  }
+  return m;
+})();
+
 export const NEGATIVE: Trait[] = [
   { id: "hemophilia", name: "출혈 과다", points: 2, icon: "drop", effect: "출혈 발생 확률 25% 증가" },
   { id: "osteoporosis", name: "골다공증", points: 3, icon: "bone", effect: "사지 골절·낙하 피해 15% 증가" },

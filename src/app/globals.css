@@ -321,6 +321,39 @@ main > .sec.neg {
   white-space: normal;
 }
 
+/* 상단 안내 배너 */
+.infobar {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex: 0 0 auto;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--dim);
+  background: rgba(95, 170, 102, 0.06);
+  border: 1px solid var(--gline);
+  border-radius: 6px;
+  padding: 6px 12px;
+}
+.infobar .ico {
+  color: var(--grn);
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+
+/* 상호 배타로 지금 고를 수 없는 카드 */
+.card:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  filter: grayscale(0.55);
+}
+.card.pos:disabled:hover {
+  border-color: var(--pline);
+}
+.card.neg:disabled:hover {
+  border-color: var(--nline);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .card {
     transition: none;

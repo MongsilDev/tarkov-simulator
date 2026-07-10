@@ -23,6 +23,7 @@
   --nsel: #281a1d;
   --nselln: #7c4740;
   --nbar: #391f23;
+  --note: #d9b45f;
   --sans: var(--font-nanum), "Malgun Gothic", system-ui, sans-serif;
 }
 
@@ -288,11 +289,10 @@ main > .sec.neg {
 .ctop {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 6px;
 }
 .cname {
-  flex: 1;
+  flex: 0 1 auto;
   min-width: 0;
   font-size: 18px;
   font-weight: 700;
@@ -305,6 +305,7 @@ main > .sec.neg {
   font-size: 13px;
   font-weight: 700;
   flex: 0 0 auto;
+  margin-left: auto;
   padding: 2px 8px;
   border-radius: 4px;
   font-variant-numeric: tabular-nums;
@@ -332,10 +333,28 @@ main > .sec.neg {
   white-space: normal;
 }
 
+/* 특이사항 노트가 달린 카드 (예: 매력 없음 → 카파 획득 가능) */
+.card.note {
+  border-color: rgba(217, 180, 95, 0.5);
+  box-shadow: 0 0 0 1px rgba(217, 180, 95, 0.22), 0 0 16px rgba(217, 180, 95, 0.12);
+}
+.cbadge {
+  flex: 0 0 auto;
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--note);
+  background: rgba(217, 180, 95, 0.14);
+  border: 1px solid rgba(217, 180, 95, 0.4);
+  border-radius: 4px;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
 /* 헤더 중앙 안내 배너 (브랜드와 점수 패널 사이) */
 .infobar {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 7px;
   flex: 1 1 auto;
   min-width: 0;
@@ -347,12 +366,18 @@ main > .sec.neg {
   background: rgba(95, 170, 102, 0.06);
   border: 1px solid var(--gline);
   border-radius: 6px;
-  padding: 6px 12px;
+  padding: 7px 12px;
 }
 .infobar .ico {
   color: var(--grn);
   font-weight: 700;
   flex: 0 0 auto;
+}
+.inotes {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
 }
 
 /* 상호 배타로 지금 고를 수 없는 카드 */
@@ -528,6 +553,14 @@ main > .sec.neg {
   .cpts {
     font-size: 12px;
     padding: 1px 6px;
+  }
+  /* narrow 2-col cards: let the title + badge wrap instead of hiding the name */
+  .ctop {
+    flex-wrap: wrap;
+    row-gap: 3px;
+  }
+  .cbadge {
+    font-size: 10px;
   }
   .bar {
     font-size: 12px;

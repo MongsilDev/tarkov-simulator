@@ -34,7 +34,7 @@ export default function Home() {
     return (
     <button
       type="button"
-      className={`card ${type}`}
+      className={`card ${type}${t.note ? " note" : ""}`}
       aria-pressed={sel.has(t.id)}
       aria-label={`${t.name} ${fmt(t.points ?? 0)}`}
       disabled={isBlocked}
@@ -45,6 +45,7 @@ export default function Home() {
       <div className="cbody">
         <div className="ctop">
           <span className="cname">{t.name}</span>
+          {t.note && <span className="cbadge">✦ {t.note}</span>}
           <span className="cpts">{fmt(t.points ?? 0)}</span>
         </div>
         <div className="ceff">• {t.effect}</div>
@@ -65,7 +66,14 @@ export default function Home() {
         </div>
         <div className="infobar" role="note">
           <span className="ico" aria-hidden="true">ⓘ</span>
-          <span>공식 정보가 없어 선택 제한이 실제와 다를 수 있습니다.</span>
+          <div className="inotes">
+            <span>공식 정보가 없어 선택 제한이 실제와 다를 수 있습니다.</span>
+            <span>시즌 캐릭터는 프레스티지를 얻을 수 없습니다.</span>
+            <span>
+              알레르기는 메드킷과 CMS를 제외한 의약품, 자극제, 음료, 식량에만 적용되며, 발동 시 손 떨림 후 중독
+              피해가 발생합니다.
+            </span>
+          </div>
         </div>
         <div className="score">
           <div className="scorepanel">

@@ -6,6 +6,7 @@ export interface Trait {
   effect: string;
   icon: string;
   points?: number; // 긍정: 음수(소모) · 부정: 양수(획득) · 글로벌: 없음
+  note?: string; // 카드에 강조 표시할 특이사항
 }
 
 export const GLOBAL: Trait[] = [
@@ -67,7 +68,7 @@ export const NEGATIVE: Trait[] = [
   { id: "incompetent", name: "무능한", points: 4, icon: "user", effect: "스킬 숙련 25% 감소 (볼트액션 제외) · 레벨 30 상한 (크래프팅 제외)" },
   { id: "polydipsia", name: "갈증 과다", points: 1, icon: "drop", effect: "수분 소모 15% 증가" },
   { id: "chronic-fatigue", name: "만성피로", points: 1, icon: "bolt", effect: "에너지 소모 15% 증가" },
-  { id: "personality-vacuum", name: "매력 없음", points: 2, icon: "coin", effect: "카리스마 상승 불가 · 상인가 20% 증가" },
+  { id: "personality-vacuum", name: "매력 없음", points: 2, icon: "coin", effect: "카리스마 상승 불가 · 상인가 20% 증가", note: "카파 획득 가능" },
   { id: "dr-jekyll", name: "지킬 박사", points: 1, icon: "cross", effect: "새 상처 상태가 레이드 종료까지 유지" },
   { id: "allergic", name: "알레르기", points: 3, icon: "leaf", effect: "식량·의약품 중 무작위 2종에 알레르기" },
   { id: "broken-container", name: "고장난 보안 컨테이너", points: 4, icon: "box", effect: "현금·열쇠·인식표·특수장비·일부 케이스만 수납 가능" },

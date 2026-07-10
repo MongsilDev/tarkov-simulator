@@ -326,3 +326,96 @@ main > .sec.neg {
     transition: none;
   }
 }
+
+/* ── Responsive ─────────────────────────────────────────────
+   The default layout packs every card into a single 100vh
+   dashboard. When the window is too small to do that (narrow
+   width OR short height), unlock natural scrolling and let the
+   sections/cards size to their content instead of being crushed
+   into fixed flex tracks. */
+@media (max-width: 900px), (max-height: 640px) {
+  body {
+    height: auto;
+    min-height: 100%;
+    overflow-y: auto;
+  }
+  .app {
+    height: auto;
+    min-height: 100dvh;
+    padding: 12px 14px 28px;
+    gap: 14px;
+  }
+  main {
+    flex: initial;
+    gap: 16px;
+  }
+  main > .sec.glob,
+  main > .sec.pos,
+  main > .sec.neg {
+    flex: initial;
+  }
+  .grid {
+    flex: initial;
+  }
+  /* drop the fixed row counts so extra rows auto-size */
+  .grid.glob,
+  .grid.pos,
+  .grid.neg {
+    grid-template-rows: none;
+    grid-auto-rows: minmax(58px, auto);
+  }
+  /* icons keyed off container height collapse when rows aren't
+     fixed — switch to a stable pixel size */
+  .card,
+  .gchip {
+    container-type: normal;
+    min-height: 58px;
+    padding: 8px 12px;
+  }
+  .cic {
+    width: 34px;
+    height: 34px;
+    max-width: none;
+    max-height: none;
+  }
+}
+
+/* Tablet / small window: two columns */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Phone: single column + stacked header */
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .score {
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .scorepanel {
+    flex: 1 1 auto;
+    justify-content: space-between;
+    padding: 8px 14px;
+  }
+  .sp-net .val {
+    font-size: 32px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .sub {
+    letter-spacing: 0.22em;
+  }
+  .cname {
+    font-size: 17px;
+  }
+}

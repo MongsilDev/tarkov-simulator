@@ -65,9 +65,7 @@ export default function Home() {
         </div>
         <div className="infobar" role="note">
           <span className="ico" aria-hidden="true">ⓘ</span>
-          <span>
-            표시된 수치와 효과, 그리고 동시 선택 제한은 비공식 추정이므로 실제와 다를 수 있습니다.
-          </span>
+          <span>공식 정보가 없어 선택 제한이 실제와 다를 수 있습니다.</span>
         </div>
         <div className="score">
           <div className="scorepanel">

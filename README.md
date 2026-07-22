@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# tarkov-simulator
 
-## Getting Started
+Escape from Tarkov 시즌 1 "KORD BREACH"의 특성(모디파이어) 포인트 시뮬레이터. 앱 내부 이름은 `kord-breach`. Project Zomboid처럼 긍정 특성은 포인트를 소모하고 부정 특성은 포인트를 획득해, 원하는 빌드를 짜 본다.
 
-First, run the development server:
+## 주요 기능
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 특성 3분류(글로벌 6 / 긍정 17 / 부정 13종) 카드 토글 선택
+- 긍정·부정·순 합계 포인트 실시간 계산
+- 같은 스탯을 정반대로 미는 특성 쌍은 상호 배타 처리(충돌 7쌍, 비공식 추정)
+- 초기화
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 동작 방식
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+단일 페이지 클라이언트 컴포넌트. 특성 데이터는 코드(`src/data/traits.ts`)에 하드코딩되어 있고 외부 API·DB를 쓰지 않는다. 카드를 클릭하면 상단 점수판이 갱신된다. 데이터 출처는 `docs/KORDBREACH.md`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 기술 스택
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js 16, React 19, TypeScript, Tailwind 4. Vercel 배포.
